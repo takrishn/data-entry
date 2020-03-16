@@ -1,0 +1,31 @@
+.page-container {
+    max-width: 80%;
+    margin: auto;
+
+    .top-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        .title {
+            text-align: left;
+            font-size: 2em;
+        }
+
+        .add-entry-btn {
+            justify-self: end;
+            width: fit-content;
+        }
+    }
+}
+
+// ======= overwriting some builtin styles ======
+
+// shoving "Show entries x" left
+div.dataTables_length.bs-select {
+    text-align: left;
+}
+
+// shoving "Showing 1 to x of y entries" left
+div.dataTables_info {
+    text-align: left;
+}
