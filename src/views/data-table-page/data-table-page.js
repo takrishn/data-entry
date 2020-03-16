@@ -16,6 +16,7 @@ const DatatablePage = () => {
             <h1 className="title">Super Fancy Datatable</h1>
             <Button className="add-entry-btn" onClick={() => setModalShow(true)}>Add +</Button>
         </div>
+        
         <Datatable data={JSONdata}></Datatable>
 
         <AddEntryModal
