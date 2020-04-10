@@ -10,13 +10,7 @@ import './data-table-page.scss';
 const DatatablePage = () => {
   const [modalShow, setModalShow] = React.useState(false);
   const [data, setData] = useState({});
-  const [columns, setColumns] = useState([
-    {
-      label: "username",
-      field: "username",
-      sort: "asc",
-      width: 150
-    },
+  const [columns] = useState([
     {
       label: "name",
       field: "name",
@@ -50,28 +44,59 @@ const DatatablePage = () => {
   ]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/users/').then( res => {
-      let rows = [];
-      for (let i = 0; i < res.data.length; i++) {
-        const entry = res.data[i];
-        const row = {
-          username: entry.username,
-          name: entry.name,
-          position: entry.position,
-          office: entry.office,
-          birthday: entry.birthday,
-          salary: entry.salary
+    // call getUsers() when the backend is up
+    // getUsers();
+
+    // dummy data to populate the table
+    let rows = [];
+    const bugsBunny = {
+      name: 'Bugs Bunny',
+      position: 'Rabbit',
+      office: 'Meadow',
+      birthday: '1940-07-27',
+      salary: '4'
+    };
+    const daffyDuck = {
+      name: 'Daffy Duck',
+      position: 'Duck',
+      office: 'Pond',
+      birthday: '1937-04-17',
+      salary: '-7'
+    };
+    rows.push(bugsBunny);
+    rows.push(daffyDuck);
+    setData({
+      columns: columns,
+      rows: rows
+    });
+
+  }, []);
+
+  function getUsers() {
+    axios.get('http://localhost:5000/users')
+      .then(res => {
+        console.log(res.data);
+        let rows = [];
+        for (let i = 0; i < res.data.length; i++) {
+          const entry = res.data[i];
+          const row = {
+            username: entry.username,
+            name: entry.name,
+            position: entry.position,
+            office: entry.office,
+            birthday: entry.birthday,
+            salary: entry.salary
+          }
+  
+          rows.push(row);
         }
-
-        rows.push(row);
-      }
-
-      setData({
-        columns: columns,
-        rows: rows
+  
+        setData({
+          columns: columns,
+          rows: rows
+        });
       });
-    })
-  });
+  }
 
   return (
     <div className="page-container">

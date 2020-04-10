@@ -1,4 +1,16 @@
+## TO RUN
+
+`data-entry> npm install`
+
+`data-entry> npm start`
+
+navigate to `localhost:3000`
+
+
+## React Default
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 
 ## Available Scripts
 
