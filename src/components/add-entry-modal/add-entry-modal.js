@@ -8,7 +8,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 
 function AddEntryModal(props) {
-
   const [day, setDay] = useState(new Date());
   const { register, handleSubmit, errors } = useForm();
   const onSubmit = data => {
@@ -63,9 +62,12 @@ function AddEntryModal(props) {
             Salary:
             <input type="number" name="salary" ref={register} />
           </label>
-          <input type="submit" />
+          <input type="submit" onClick={props.onHide}/>
         </form>
       </Modal.Body>
+      <Modal.Footer>
+        
+      </Modal.Footer>
     </Modal>
   );
 }
